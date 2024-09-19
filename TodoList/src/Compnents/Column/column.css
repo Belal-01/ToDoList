@@ -1,0 +1,19 @@
+.column{
+  background-color: rgba(179, 171, 171, 0.534);
+  min-height: 500px ;
+  padding:20px 10px;
+  border-radius: 20px;
+}
+.column-state{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom:10px;
+}
+.column button{
+  all:unset;
+  border:1px solid black;
+  padding:5px 10px;
+  border-radius:10px;
+  background-color: white;
+}
