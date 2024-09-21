@@ -8,7 +8,7 @@ const store = (set)=>({
     id:'isdhfwei'
   },{
     title:"Learn js",
-    state:"PLANING",
+    state:"DONE",
     id:'isdhei'
   },{
     title:"Learn js",
@@ -19,6 +19,9 @@ const store = (set)=>({
     state:"ONGOING",
     id:'isdhei'
   }],
+  addTask:(title,id)=>set((store)=>({Tasks:[...store.Tasks,{title:title,id,state:"PLANING"}]})),
+
+
 
 
 })
