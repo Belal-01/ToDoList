@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './task.css'
 
+
 const Task = ({title}) => {
-  
+
 
   return (
-    <div className='task'>
+    <div className='task' >
       <div className="task-title">
         {title}
       </div>
