@@ -13,13 +13,16 @@ const store = (set)=>({
   },{
     title:"Learn js",
     state:"PLANING",
-    id:'isdhei'
+    id:'isdhsfei'
   },{
     title:"Learn js",
     state:"ONGOING",
-    id:'isdhei'
+    id:'isdhhei'
   }],
   addTask:(title,id)=>set((store)=>({Tasks:[...store.Tasks,{title:title,id,state:"PLANING"}]})),
+  deleteTask:(id)=>set((store)=>({Tasks:store.Tasks.filter((task)=>task.id!==id)})),
+  upadateTask:(state,id)=>set((store)=>({Tasks:store.Tasks.map((task)=>task.id===id?{...task,state}:task)}))
+
 
 
 
