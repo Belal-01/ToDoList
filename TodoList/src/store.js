@@ -4,18 +4,42 @@ import {create} from 'zustand'
 const store = (set)=>({
   Tasks:[{
     title:"Learn React",
+    description:"lorem sdfwiefsn shfewhf skdfow ",
+    date:{
+      day:20,
+      month:9,
+      year:2024
+    },
     state:"PLANING",
     id:'isdhfwei'
   },{
     title:"Learn js",
+    description:"lorem sdfwiefsn shfewhf skdfow ",
+    date:{
+      day:20,
+      month:9,
+      year:2024
+    },
     state:"DONE",
     id:'isdhei'
   },{
-    title:"Learn js",
+    title:"Learn HTML",
+    description:"lorem sdfwiefsn shfewhf skdfow ",
+    date:{
+      day:20,
+      month:9,
+      year:2024
+    },
     state:"PLANING",
     id:'isdhsfei'
   },{
-    title:"Learn js",
+    title:"Learn Css",
+    description:"lorem sdfwiefsn shfewhf skdfow ",
+    date:{
+      day:20,
+      month:9,
+      year:2024
+    },
     state:"ONGOING",
     id:'isdhhei'
   }],

@@ -4,18 +4,22 @@ import { useStore } from '../../store'
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
-
-const Task = ({title,state,id}) => {
+const Task = ({id}) => {
+const [modle,setModle] = useState(false);
+const task = useStore((store)=>store.Tasks.find((task)=>task.id===id))
  const deleteTask = useStore((store)=>store.deleteTask)
  const updateTask = useStore((store)=>store.upadateTask)
+
+ console.log(task.date)
 
   return (
     <>
     <div className='task' >
       <div className="task-header">
         <div className="task-title">
-          {title}
+          {task.title}
         </div>
         <span className="delete-task-btn" onClick={()=>{
           deleteTask(id)
@@ -24,33 +28,56 @@ const Task = ({title,state,id}) => {
         </span>
       </div>
       <div className="task-buttons">
-       {state!=='PLANING'&&
+       {task.state!=='PLANING'&&
        <span className='left-arrow' onClick={()=>{
-        state==="DONE"&&updateTask('ONGOING',id)
-        state==="ONGOING"&&updateTask('PLANING',id)}}>
+        task.state==="DONE"&&updateTask('ONGOING',id)
+        task.state==="ONGOING"&&updateTask('PLANING',id)}}>
           <FaArrowAltCircleLeft />
         </span>}
-      {state!=="DONE"&&
+      {task.state!=="DONE"&&
       <span className='right-arrow' onClick={()=>{
-        state==="PLANING"&&updateTask("ONGOING",id)
-        state==="ONGOING"&&updateTask("DONE",id)
+        task.state==="PLANING"&&updateTask("ONGOING",id)
+        task.state==="ONGOING"&&updateTask("DONE",id)
       }}>
         <FaArrowAltCircleRight />
       </span>}
       </div>
-    
-      <div className="task-info">
-       
+      <div className="task-show-modle">
+        <span className='showMore-btn' onClick={()=>setModle(true)}>
+          ShowMore
+        </span>       
       </div>
+  
     </div>
     <div>
 
     </div>
-    <div className="task-modle">
-      <div className="overly"></div>
-      <div className="modle-content">task modle</div>
+ {modle&&<div className="task-modle">
+    <div className="overly" onClick={()=>setModle(false)}></div>
+    <div className="modle-content">
+      <div className="modle-header">
+        <div className="modle-title">
+          {task.title}
+        </div>
+        <div className="modle-close-btn" >
+          <span onClick={()=>setModle(false)}>
+            <IoMdCloseCircleOutline />
+          </span>
+        </div>
+      </div>
+      <div className="modle-description" >
+          {task.description}
+      </div>
+      <hr />
+      <div className="modle-date">
+        <span>
+          {task.date.day +' / '+ task.date.month +' / ' +task.date.year}
+        </span>
+      </div>
     </div>
+  </div>}
     </>
+
   )
 }
 

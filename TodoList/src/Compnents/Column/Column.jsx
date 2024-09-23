@@ -21,7 +21,7 @@ const filteredTasks = useMemo(()=>{
 
  
 
-  const TasksElements = filteredTasks.map((task)=>(<Task title = {task.title} state={state} id={task.id} key={task.id}/>))
+  const TasksElements = filteredTasks.map((task)=>(<Task id={task.id} key={task.id}/>))
 
 
   return (
