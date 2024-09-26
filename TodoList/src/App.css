@@ -1,7 +1,9 @@
-.columns-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
-  column-gap: 20px;
+body{
+  background-image: url(https://picsum.photos/id/804/1400/800);
+  background-repeat: no-repeat;
+}
 
-  margin:100px 100px 0 100px;
+a{
+  text-decoration: none;
+  color:black;
 }

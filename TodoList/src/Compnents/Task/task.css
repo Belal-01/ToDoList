@@ -5,6 +5,7 @@
  min-height: 60px;
  margin-top:10px;
  position:relative;
+ cursor:move;
 }
 
 .task-title{
@@ -103,4 +104,66 @@ color:rgb(163, 162, 162);
 cursor: pointer;
 font-size: 14px;
 
+}
+.modle-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.modle-edit span{
+  color:gray;
+  cursor: pointer;
+  padding-right:10px;
+}
+/* add styles to the warning message */
+
+.warrning{
+  position: absolute;
+  top:-30%;
+  left:40%;
+  background-color: rgb(241, 238, 238);
+  padding:10px;
+  border-radius: 10px;
+  min-width: 270px;
+  z-index: 10;
+  transition: top .4s;
+}
+.showWarrning{
+  top:10%
+}
+.warrning-title{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom:10px;
+}
+.warrning-message{
+  margin-bottom: 10px;
+}
+.warrning-buttons{
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+/* .warrning-buttons button{
+  all:unset;
+  padding:5px 10px;
+  border:1px solid white;
+  background-color: green;
+
+} */
+.save{
+  all:unset;
+  padding:3px 15px;
+  border:1px solid white;
+  background-color: rgb(20, 182, 20);
+  cursor: pointer;
+  font-weight: bold;
+}
+.discurd{
+  all:unset;
+  padding:5px 15px;
+  border:1px solid white;
+  background-color: rgb(250, 56, 56);
+  cursor: pointer;
+  font-weight: bold;
 }

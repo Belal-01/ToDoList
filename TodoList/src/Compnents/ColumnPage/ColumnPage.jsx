@@ -1,57 +1,48 @@
 import React, { useMemo } from 'react'
-import './column.css'
 import Task from '../Task/Task'
+import './columnPage.css'
 import { useStore } from '../../store.js'
 import { useState } from 'react'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
-import { NavLink } from 'react-router-dom'
+import TaskPage from '../TaskPage/TaskPage.jsx'
+import { FaArrowLeft } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom'
 
 
-const Column = ({state}) => {
+const ColumnPage = ({state}) => {
   const [title,setTitle] = useState('')
   const [description,setDescription] = useState('')
   const [hideForm,setHideForm] = useState(true);
-  const [drag,setDrag] = useState(false)
   const tasks = useStore((store)=>store.Tasks)
   const addTask = useStore((store)=>store.addTask)
-  const dragTask = useStore((store)=>store.DragTask)
-  const moveTask = useStore((store)=> store.moveTask)
-  const setDragTask = useStore((store)=>store.setDragTask)
- 
+  const navigate = useNavigate();
+
 
 const filteredTasks = useMemo(()=>{
    const newTasks =  tasks.filter((task)=>task.state===state);
    return newTasks
   },[tasks])
 
-
- 
-
-  const TasksElements = filteredTasks.map((task)=>(<Task id={task.id} key={task.id}/>))
+  const TasksElements = filteredTasks.map((task)=>(<TaskPage id={task.id} key={task.id}/>))
 
 
   return (
-    <div className={classNames('column',{dragable:drag})} 
-    onDragOver={(e)=>{
-      e.preventDefault()
-      setDrag(true)
-    }}
-    onDragLeave={()=>setDrag(false)}
-    onDrop={()=>{
-      moveTask(state,dragTask)
-      setDragTask(null)
-      setDrag(false)
-    }}>
+    <>
+      <div className="back-btn">
+        <span onClick={()=>navigate(-1)}>
+          <FaArrowLeft />
+        </span>
+      </div>
+    <div className="columnPage-container">
+    <div className="columnPage">
       <div className="column-state">
-        <NavLink to={`/${state}`}>
-          <button className={classNames('column-state-btn',state)}>
-          {state}
-          </button>
-        </NavLink>          
+        <button className={classNames('column-state-btn',state)}>
+        {state}
+        </button>        
       </div>
       <div className="column-tasks">
-          {TasksElements}
+         {TasksElements}
       </div>
       
       
@@ -83,8 +74,12 @@ const filteredTasks = useMemo(()=>{
 
       </form></>}
     </div>
+    </div>
+
+    </>
 
   )
 }
 
-export default Column
+export default ColumnPage
+
